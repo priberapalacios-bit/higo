@@ -1,11 +1,18 @@
 def validate_location_input(value: str) -> None:
     """
-    Valida entradas de ubicación.
+    Valida ubicaciones ingresadas por el usuario.
 
     Errores:
-        ValueError si el texto está vacío.
+        ValueError si el texto es inválido.
     """
-    if not value.strip():
+    cleaned_value = value.strip()
+
+    if not cleaned_value:
         raise ValueError(
             "La ubicación no puede estar vacía."
+        )
+
+    if len(cleaned_value) < 3:
+        raise ValueError(
+            "La ubicación necesita más detalle."
         )
