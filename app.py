@@ -12,10 +12,16 @@ st.set_page_config(
 
 apply_branding()
 
-st.title(APP_NAME)
+st.title("🧠 RutaCalma Madrid")
+st.caption(
+    "Movilidad urbana diseñada para reducir incertidumbre y carga sensorial."
+)
 
 tab_home, tab_regulation = st.tabs(
-    ["Planificador", "Autorregulación"]
+    [
+        "Planificador de trayectos",
+        "Autorregulación",
+    ]
 )
 
 with tab_home:
