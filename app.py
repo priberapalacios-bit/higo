@@ -12,7 +12,7 @@ st.set_page_config(
 
 inject_brand()
 
-st.title("🧠 RutaCalma Madrid")
+st.title("RutaCalma Madrid")
 
 st.caption(
     "Movilidad urbana diseñada para reducir incertidumbre y carga sensorial."
