@@ -7,36 +7,40 @@ def build_route_plan(
     incident: str,
 ) -> list[RouteOption]:
     """
-    Construye rutas adaptadas al contexto actual.
-
-    Inputs:
-        origin: punto de origen.
-        destination: punto de destino.
-        incident: estado actual del transporte.
+    Construye rutas adaptadas según incidencias.
 
     Outputs:
-        Lista de rutas disponibles.
+        Lista ordenada por estabilidad.
     """
     routes = [
         RouteOption(
-            name="Ruta tranquila",
+            name="Ruta estable",
             description=(
-                f"Camina 5 minutos desde "
-                f"{origin} y toma Cercanías hasta {destination}."
+                f"Camina 5 minutos desde {origin}, "
+                f"usa Cercanías y baja en {destination}."
             ),
             crowd_density=30,
         ),
         RouteOption(
             name="Ruta alternativa",
             description=(
-                f"Usa EMT evitando transbordos hacia {destination}."
+                f"Toma EMT evitando transbordos hasta {destination}."
             ),
             crowd_density=50,
         ),
     ]
 
     if incident == "Metro cerrado":
+        routes[0].description += (
+            " El metro está cerrado; sigue señalización exterior."
+        )
         routes[0].crowd_density += 20
+
+    if incident == "Retraso severo":
+        routes[1].description += (
+            " Hay retrasos prolongados; considera salir antes."
+        )
+        routes[1].crowd_density += 15
 
     if incident == "Alta ocupación":
         for route in routes:
