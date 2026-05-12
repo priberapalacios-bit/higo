@@ -1,12 +1,15 @@
 from data.database import get_connection
 
 
-def initialize_database() -> None:
+def save_route_log(
+    origin: str,
+    destination: str,
+) -> None:
     """
-    Inicializa tablas SQLite.
+    Guarda trayectos generados para métricas demo.
 
     Errores:
-        RuntimeError si la migración falla.
+        RuntimeError si SQLite falla.
     """
     connection = get_connection()
 
@@ -14,20 +17,31 @@ def initialize_database() -> None:
         cursor = connection.cursor()
 
         cursor.execute(
-            '''
+            """
             CREATE TABLE IF NOT EXISTS route_logs (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 origin TEXT NOT NULL,
                 destination TEXT NOT NULL
             )
-            '''
+            """
+        )
+
+        cursor.execute(
+            """
+            INSERT INTO route_logs (
+                origin,
+                destination
+            )
+            VALUES (?, ?)
+            """,
+            (origin, destination),
         )
 
         connection.commit()
 
     except Exception as error:
         raise RuntimeError(
-            f"Error creando tablas: {error}"
+            f"Error guardando trayecto: {error}"
         ) from error
 
     finally:
