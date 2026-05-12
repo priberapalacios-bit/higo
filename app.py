@@ -1,7 +1,7 @@
 import streamlit as st
 
 from config import APP_NAME
-from ui._brand import apply_branding
+from ui._brand import inject_brand
 from ui.home import render_home_page
 from ui.regulation import render_regulation_page
 
@@ -10,9 +10,10 @@ st.set_page_config(
     layout="wide",
 )
 
-apply_branding()
+inject_brand()
 
 st.title("🧠 RutaCalma Madrid")
+
 st.caption(
     "Movilidad urbana diseñada para reducir incertidumbre y carga sensorial."
 )
@@ -29,3 +30,4 @@ with tab_home:
 
 with tab_regulation:
     render_regulation_page()
+    
