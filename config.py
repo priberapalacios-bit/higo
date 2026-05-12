@@ -8,6 +8,9 @@ DEFAULT_UNCERTAINTY_TOLERANCE = 3
 
 MAX_STRESS_SCORE = 100
 
+SAFE_STRESS_LIMIT = 45
+HIGH_STRESS_LIMIT = 70
+
 INCIDENT_OPTIONS = [
     "Sin incidencias",
     "Metro cerrado",
@@ -15,5 +18,14 @@ INCIDENT_OPTIONS = [
     "Alta ocupación",
 ]
 
-SAFE_STRESS_LIMIT = 45
-HIGH_STRESS_LIMIT = 70
+EMPTY_ROUTE_MESSAGE = (
+    "Completa origen y destino para generar un trayecto adaptado."
+)
+
+SUCCESS_ROUTE_MESSAGE = (
+    "Ruta generada correctamente. Ya tienes un plan alternativo claro."
+)
+
+ERROR_INPUT_MESSAGE = (
+    "Necesitamos origen y destino para planificar el trayecto."
+)
