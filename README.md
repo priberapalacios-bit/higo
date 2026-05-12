@@ -17,3 +17,13 @@ Asistente de movilidad urbana para personas con autismo nivel 1.
 3. Seleccionar repo
 4. App file: app.py
 5. Deploy
+
+/app.py
+/runtime.txt
+/requirements.txt
+/README.md
+/services
+    state.py
+    routes.py
+    stress.py
+    support.py
